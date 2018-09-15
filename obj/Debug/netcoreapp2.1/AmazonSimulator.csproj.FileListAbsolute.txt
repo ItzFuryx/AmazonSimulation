@@ -1,0 +1,14 @@
+C:\AmazonSimulation.git\trunk\bin\Debug\netcoreapp2.1\AmazonSimulator.deps.json
+C:\AmazonSimulation.git\trunk\bin\Debug\netcoreapp2.1\AmazonSimulator.runtimeconfig.json
+C:\AmazonSimulation.git\trunk\bin\Debug\netcoreapp2.1\AmazonSimulator.runtimeconfig.dev.json
+C:\AmazonSimulation.git\trunk\bin\Debug\netcoreapp2.1\AmazonSimulator.dll
+C:\AmazonSimulation.git\trunk\bin\Debug\netcoreapp2.1\AmazonSimulator.pdb
+C:\AmazonSimulation.git\trunk\obj\Debug\netcoreapp2.1\AmazonSimulator.csprojAssemblyReference.cache
+C:\AmazonSimulation.git\trunk\obj\Debug\netcoreapp2.1\AmazonSimulator.csproj.CoreCompileInputs.cache
+C:\AmazonSimulation.git\trunk\obj\Debug\netcoreapp2.1\AmazonSimulator.RazorAssemblyInfo.cache
+C:\AmazonSimulation.git\trunk\obj\Debug\netcoreapp2.1\AmazonSimulator.RazorAssemblyInfo.cs
+C:\AmazonSimulation.git\trunk\obj\Debug\netcoreapp2.1\AmazonSimulator.AssemblyInfoInputs.cache
+C:\AmazonSimulation.git\trunk\obj\Debug\netcoreapp2.1\AmazonSimulator.AssemblyInfo.cs
+C:\AmazonSimulation.git\trunk\obj\Debug\netcoreapp2.1\AmazonSimulator.RazorTargetAssemblyInfo.cache
+C:\AmazonSimulation.git\trunk\obj\Debug\netcoreapp2.1\AmazonSimulator.dll
+C:\AmazonSimulation.git\trunk\obj\Debug\netcoreapp2.1\AmazonSimulator.pdb
