@@ -76,25 +76,69 @@
             }
 
             function makeAdditionalVisuals() {
-                var mtlLoader = new THREE.MTLLoader();
-                mtlLoader.setPath('textures/');
-                mtlLoader.load('Lantern.MTL', function (materials) {
-                    materials.preload();
-
-                    var objLoader = new THREE.OBJLoader();
-                    objLoader.setMaterials(materials);
-                    objLoader.load('models/Lantern.obj', function (object) {
-                        object.position.x = 0;
-                        object.position.y = 0;
-                        object.position.z = 0;
-                        object.scale.x = 100;
-                        object.scale.y = 100;
-                        object.scale.z = 100;
-                        scene.add(object);
-                    });
-                });
-
                 var dist = 0;
+                for (var i = 0; i < 7; i++) {
+                    var mtlLoader = new THREE.MTLLoader();
+                    mtlLoader.setPath('textures/');
+                    mtlLoader.load('Lantern.MTL', function (materials) {
+                        materials.preload();
+
+                        var objLoader = new THREE.OBJLoader();
+                        objLoader.setMaterials(materials);
+                        objLoader.load('models/Lantern.obj', function (object) {
+                            object.position.x = -42;
+                            object.position.y = -18;
+                            object.position.z = -56 + dist * -4;
+                            object.scale.x = .1;
+                            object.scale.y = .1;
+                            object.scale.z = .1;
+                            scene.add(object);
+                        });
+                    });
+
+                    var mtlLoader = new THREE.MTLLoader();
+                    mtlLoader.setPath('textures/');
+                    mtlLoader.load('Lantern.MTL', function (materials) {
+                        materials.preload();
+
+                        var objLoader = new THREE.OBJLoader();
+                        objLoader.setMaterials(materials);
+                        objLoader.load('models/Lantern.obj', function (object) {
+                            object.position.x = -47;
+                            object.position.y = -18;
+                            object.position.z = -56 + dist * -4;
+                            object.scale.x = .1;
+                            object.scale.y = .1;
+                            object.scale.z = .1;
+                            scene.add(object);
+                            dist++;
+                        });
+                    });
+                }
+
+                dist = 0;
+
+                for (var i = 0; i < 7; i++) {
+                    var mtlLoader = new THREE.MTLLoader();
+                    mtlLoader.setPath('textures/');
+                    mtlLoader.load('Helmet.MTL', function (materials) {
+                        materials.preload();
+
+                        var objLoader = new THREE.OBJLoader();
+                        objLoader.setMaterials(materials);
+                        objLoader.load('models/Helmet.obj', function (object) {
+                            object.position.x = THREE.Math.randFloat(0, 30);
+                            object.position.y = -0.5;
+                            object.position.z = THREE.Math.randFloat(0, 30);
+                            object.rotation.y = THREE.Math.randFloat(0, 25);
+                            object.scale.x = .1;
+                            object.scale.y = .1;
+                            object.scale.z = .1;
+                            scene.add(object);
+                        });
+                    });
+                }
+
                 for (var i = 0; i < 20; i++) {
 
                     var mtlLoader = new THREE.MTLLoader();
