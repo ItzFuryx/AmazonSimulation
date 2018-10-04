@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace Models
 {
-    public class Cart : Moveable, IUpdatable
+    public class Cart : MoveableModel, IUpdatable
     {
         public string type { get; }
         public Guid guid { get; }

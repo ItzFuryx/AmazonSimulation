@@ -33,6 +33,7 @@ namespace Controllers
     {
 
         public Model3DCommand (string type, Cart parameters) : base (type, parameters) { }
+        public Model3DCommand (string type, ExchangePoint parameters) : base (type, parameters) { }
         public Model3DCommand (string type, ItemStand parameters) : base (type, parameters) { }
         public Model3DCommand (string type, Item parameters) : base (type, parameters) { }
     }
@@ -41,6 +42,7 @@ namespace Controllers
     {
 
         public UpdateModel3DCommand (Cart parameters) : base ("update", parameters) { } 
+        public UpdateModel3DCommand (ExchangePoint parameters) : base ("update", parameters) { } 
         public UpdateModel3DCommand (ItemStand parameters) : base ("update", parameters) { }
         public UpdateModel3DCommand (Item parameters) : base ("update", parameters) { }
     }

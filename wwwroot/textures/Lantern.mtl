@@ -1,0 +1,20 @@
+# File produced by Open Asset Import Library (http://www.assimp.sf.net)
+# (assimp v3.1.187496374)
+
+newmtl mine_car:Lantern
+Kd 0.8 0.8 0.8
+Ka 0 0 0
+Ke 0 0 0
+d 1
+illum 1
+map_Kd Lantern.png
+
+newmtl mine_car:blinn6
+Kd 0.8 0.737567 0.3008
+Ka 0 0 0
+Ks 0.960784 0.778931 0.301423
+Ke 0 0 0
+d 0.119661
+Ns 2.15248
+illum 2
+

@@ -5,11 +5,21 @@ using Newtonsoft.Json;
 
 namespace Models
 {
-    public class ExchangePoint
+    public class ExchangePoint : Model
     {
+        public string type { get; }
+        public Guid guid { get; }
         public float cash = 1000;
         private List<Item> _dynamite = new List<Item> ();
         private List<Item> _ores = new List<Item> ();
+
+        public ExchangePoint ()
+        {
+            this.type = "exchangepoint";
+            this.guid = Guid.NewGuid ();
+            position.x = 15;
+            position.z = 0;
+        }
 
         public void OnReceiveItem (Item item)
         {

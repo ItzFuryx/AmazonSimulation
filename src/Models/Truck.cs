@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace Models
 {
-    public class Truck : Moveable, IUpdatable
+    public class Truck : MoveableModel, IUpdatable
     {
         private Item _item;
         public string type { get; }

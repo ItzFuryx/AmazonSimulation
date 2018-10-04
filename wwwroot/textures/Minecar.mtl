@@ -9,7 +9,7 @@ Ke 0 0 0
 d 1
 Ns 6.31179
 illum 2
-map_Kd C:\Users\DarkwarNL\Desktop\Mine car texture.jpg
+map_Kd MineCartexture.jpg
 
 newmtl lambert2
 Kd 0.8 0.8 0.8
@@ -17,5 +17,4 @@ Ka 0 0 0
 Ke 0 0 0
 d 1
 illum 1
-map_Kd C:\Users\DarkwarNL\Desktop\Mine car texture.jpg
-
+map_Kd MineCartexture.jpg

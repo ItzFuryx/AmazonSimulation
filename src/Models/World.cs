@@ -15,20 +15,12 @@ namespace Models
         public World () // init world
         {
             manager.CreateCart (new Vector3 (0, 0, 0));
+            exchanger = new ExchangePoint ();
             for (var i = 0; i < 6; i++)
             {
-                itemStands.Add(new ItemStand(new Vector3(7.5f, 1.1f, 5 + i *4), new Quaternion(), new Item()));
-                itemStands.Add(new ItemStand(new Vector3(22.5f, 1.1f, 5 + i *4), new Quaternion(), new Item()));
+                itemStands.Add (new ItemStand (new Vector3 (7.5f, 1.1f, 5 + i * 4), new Quaternion (), new Item ()));
+                itemStands.Add (new ItemStand (new Vector3 (22.5f, 1.1f, 5 + i * 4), new Quaternion (), new Item ()));
             }
-
-            /*
-            manager.SendCart (new Vector3 (5, 0, -20));
-            manager.SendCart (new Vector3 (25, 0, -20));
-            manager.SendCart (new Vector3 (10, 0, -20));
-            manager.SendCart (new Vector3 (-5, 0, -20));
-            manager.SendCart (new Vector3 (-25, 0, -20));
-            manager.SendCart (new Vector3 (-10, 0, -20));
-            */
         }
 
         public IDisposable Subscribe (IObserver<Command> observer)
@@ -56,10 +48,18 @@ namespace Models
             {
                 obs.OnNext (new UpdateModel3DCommand (m3d));
             }
+            foreach (ItemStand m3d in itemStands)
+            {
+                obs.OnNext (new UpdateModel3DCommand (m3d));
+            }
+
+            obs.OnNext (new UpdateModel3DCommand (exchanger));
         }
 
         public bool Update (int tick)
         {
+            SendCommandToObservers (new UpdateModel3DCommand (exchanger));
+
             for (int i = 0; i < itemStands.Count; i++)
             {
                 ItemStand u = itemStands[i];

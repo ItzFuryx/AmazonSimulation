@@ -53,15 +53,7 @@
                 plane.position.z = -5;
                 scene.add(plane);
 
-                var geometry = new THREE.BoxGeometry(5, 5, 3);
-                var material = new THREE.MeshBasicMaterial({ color: 0xffff00, side: THREE.DoubleSide });
-                var exchangepoint = new THREE.Mesh(geometry, material);
-                exchangepoint.position.x = 15;
-                exchangepoint.position.z = 0;
-                scene.add(exchangepoint);
-
-               
-
+                //Lichten fixen anders zie je de modellen niet goed
                 var keyLight = new THREE.DirectionalLight(new THREE.Color('hsl(30, 100%, 75%)'), 1.0);
                 keyLight.position.set(-100, 0, 100);
 
@@ -75,11 +67,76 @@
                 scene.add(fillLight);
                 scene.add(backLight);
 
-                // makeCart();
+                //maak random objecten door de scene heen
+                makeAdditionalVisuals();
 
                 var light = new THREE.AmbientLight(0x404040);
                 light.intensity = 4;
                 scene.add(light);
+            }
+
+            function makeAdditionalVisuals() {
+                var mtlLoader = new THREE.MTLLoader();
+                mtlLoader.setPath('textures/');
+                mtlLoader.load('Lantern.MTL', function (materials) {
+                    materials.preload();
+
+                    var objLoader = new THREE.OBJLoader();
+                    objLoader.setMaterials(materials);
+                    objLoader.load('models/Lantern.obj', function (object) {
+                        object.position.x = 0;
+                        object.position.y = 0;
+                        object.position.z = 0;
+                        object.scale.x = 100;
+                        object.scale.y = 100;
+                        object.scale.z = 100;
+                        scene.add(object);
+                    });
+                });
+
+                var dist = 0;
+                for (var i = 0; i < 20; i++) {
+
+                    var mtlLoader = new THREE.MTLLoader();
+                    mtlLoader.setPath('textures/');
+                    mtlLoader.load('Barrel.MTL', function (materials) {
+                        materials.preload();
+
+                        var objLoader = new THREE.OBJLoader();
+                        objLoader.setMaterials(materials);
+                        objLoader.load('models/Barrel.obj', function (object) {
+                            object.position.x = 0 + 2 * dist;
+                            object.position.y = 0;
+                            object.position.z = -10 + THREE.Math.randFloat(-2, 2);
+                            object.scale.x = .3;
+                            object.scale.y = .3;
+                            object.scale.z = .3;
+                            dist++;
+                            scene.add(object);
+                        });
+                    });
+                }
+                for (var i = 0; i < 20; i++) {
+                    var mtlLoader = new THREE.MTLLoader();
+                    mtlLoader.load('textures/Pickaxe.MTL', function (materials) {
+                        materials.preload();
+
+                        var objLoader = new THREE.OBJLoader();
+                        objLoader.setMaterials(materials);
+                        objLoader.load('models/Pickaxe.obj', function (object) {
+
+                            object.position.x = THREE.Math.randFloat(0, 30);
+                            object.position.y = .3;
+                            object.position.z = THREE.Math.randFloat(0, 30);
+                            object.rotation.x = 1.5;
+                            object.rotation.z = THREE.Math.randFloat(0, 25);
+                            object.scale.x = .03;
+                            object.scale.y = .03;
+                            object.scale.z = .03;
+                            scene.add(object);
+                        });
+                    });
+                }
             }
 
             function onWindowResize() {
@@ -103,14 +160,25 @@
                         if (command.parameters.type == "truck") {
                             //truck maken...
                         }
-                        if (command.parameters.type == "itemStand") {
+                        if (command.parameters.type == "exchangepoint") {
+                            worldObjects[command.parameters.guid] = 0;
+
+                            var geometry = new THREE.BoxGeometry(5, 5, 3);
+                            var material = new THREE.MeshBasicMaterial({ color: 0xffff00, side: THREE.DoubleSide });
+                            var exchangepoint = new THREE.Mesh(geometry, material);
+                            var group = new THREE.Group();
+                            group.add(exchangepoint);
+                            scene.add(group);
+                            worldObjects[command.parameters.guid] = group;
+                        }
+
+                        if (command.parameters.type == "itemstand") {
                             worldObjects[command.parameters.guid] = 0;
                             var geometry = new THREE.BoxGeometry(10, 2, 2);
                             var material = new THREE.MeshBasicMaterial({ color: 0x0000ff, side: THREE.DoubleSide });
                             var stellage = new THREE.Mesh(geometry, material);
                             var group = new THREE.Group();
                             group.add(stellage);
-
                             scene.add(group);
                             worldObjects[command.parameters.guid] = group;
                         }
@@ -119,7 +187,8 @@
                             if (worldObjects[command.parameters.guid] == null) {
                                 worldObjects[command.parameters.guid] = 0; //omdat het even duurt voordat de carts ingeladen zijn anders maakt hij 10 extra die niet gebruikt worden. memory leak.
                                 var mtlLoader = new THREE.MTLLoader();
-                                mtlLoader.load('textures/Minecart.MTL', function (materials) {
+                                mtlLoader.setPath('textures/');
+                                mtlLoader.load('Minecar.MTL', function (materials) {
                                     materials.preload();
 
                                     var objLoader = new THREE.OBJLoader();
@@ -157,6 +226,7 @@
                     }
                 }
             }
+
 
             init();
             animate();

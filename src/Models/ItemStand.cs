@@ -18,7 +18,7 @@ namespace Models
         public bool needsUpdate = true;
         public ItemStand (Vector3 pos, Quaternion rot, Item item)
         {
-            this.type = "itemStand";
+            this.type = "itemstand";
             this.guid = Guid.NewGuid ();
 
             this._position = pos;
